@@ -1,2 +1,0 @@
-# training-mern
-Mern-training
