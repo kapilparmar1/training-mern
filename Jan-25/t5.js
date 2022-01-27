@@ -51,8 +51,6 @@ const get = async () => {
     tr.appendChild(td4);
     table.appendChild(tr);
   });
-
-  //   document.getElementById("id").innerHTML = 7;
 };
 
 get();
