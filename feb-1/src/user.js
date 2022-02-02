@@ -8,11 +8,14 @@ class USER extends react.Component {
       items: [],
       DataisLoaded: false,
       clicked: false,
+      Email : "",
+      FN : "",
+      LN : "",
+      Avatar : "",
+      ID : "",
     };
   }
 
-  // ComponentDidMount is used to
-  // execute the code
   componentDidMount() {
     fetch("https://reqres.in/api/users?page=2")
       .then((res) => res.json())
@@ -25,12 +28,6 @@ class USER extends react.Component {
   }
   render() {
     const { DataisLoaded, items } = this.state;
-    let styleElement = {
-      margin: "auto",
-      border: "1px solid black",
-      borderCollapse: "collapse",
-      padding: "5px",
-    };
     if (!DataisLoaded)
       return (
         <div>
@@ -40,44 +37,51 @@ class USER extends react.Component {
 
     return (
       <div className="App">
-        <h1> Fetch data from an api in react </h1>{" "}
+      
+        <div style={{"margin-left" : "50px"}}>
         <table>
           <thead>User Table</thead>
           <th>
             <td>Id</td>
-            <td>Email</td>
-            <td>FirstName</td>
-            <td>LastName</td>
-            <td>Avatar</td>
+           
           </th>
         </table>
+
+        </div>
         {items.data.map((item) => (
-          <table>
-            <tr style={styleElement}>
-              <td style={styleElement}>{item.id} : </td>
-              <img src={item.avatar} alt="image" />
-              <td>
-                {this.state.clicked
-                  ? `${item.email}, ${item.first_name}, ${item.last_name}
-                      `
-                  : ""}
-              </td>
+          <div style={{"margin-left" : "50px",width:"50vw","display" : "flex",alignItems : "center",justifyContent : "space-between"}}>
+          <table >
+            <tr >
+              <td >{item.id} : </td>
+              <td >
               <button
                 onClick={() => {
-                  this.Count = this.Count + 1;
-                  if (this.Count == 1) {
-                    this.setState({ clicked: true });
-                  } else if (this.Count == 2) {
-                    this.setState({ clicked: false });
-                    this.Count = 0;
-                  }
+                  this.setState({ID  : item.id,Email : item.email,FN : item.first_name,LN : item.last_name,Avatar : item.avatar})
+                //  this.Count = this.Count + 1;
+                 this.setState({ clicked: true });
+                 
                 }}
               >
-                {!this.state.clicked ? "Show More" : "Show less"}
+                Show
               </button>
+              </td>
             </tr>
           </table>
+          </div>
         ))}
+        <div style={{"margin-left" : "200px", "margin-top" : "-170px"}}>
+          {this.state.clicked  ? (
+                <table>
+                <tr>
+                <tr><td>ID : {this.state.ID}</td></tr>
+                <tr><td>Email : {this.state.Email}</td></tr> <tr><td>First_Name :{this.state.FN}</td></tr>
+                    <tr><td>Last_Name : {this.state.LN}</td></tr><tr><td> Avatar : <img src={this.state.Avatar} alt="image" width={50} height={50}/></td></tr>
+                
+                    </tr>{" "}
+                    </table>) : (
+                ""
+              )}
+              </div>
       </div>
     );
   }

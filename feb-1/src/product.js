@@ -8,6 +8,12 @@ class PRODUCT extends react.Component {
       items: [],
       DataisLoaded: false,
       clicked: false,
+      Name : "",
+      Year : "",
+      Color : "",
+      Pantone : "",
+      ID : "",
+   
     };
   }
 
@@ -40,10 +46,11 @@ class PRODUCT extends react.Component {
 
     return (
       <div className="App">
-        <h1> Fetch data from an api in react </h1>{" "}
+    
+        <div style={{"margin-left" : "50px"}}>
         <table>
           <thead>Product Table</thead>
-          <th>
+          <th >
             <td>Id</td>
             {/* <td>Name</td>
             <td>Year</td>
@@ -51,45 +58,53 @@ class PRODUCT extends react.Component {
             <td>Pantone_Value</td> */}
           </th>
         </table>
+
+        </div>
+      
+
         {items.data.map((item) => (
+       
+              <div style={{"margin-left" : "50px"}}>
           <table>
-            <tr style={{ border: "2px solid black" }}>
-              <td style={styleElement} key={item}>
-                {item.id} :{" "}
+            <tr >
+              <td  key={item}>
+                {item.id} 
               </td>
-
-              {this.state.clicked ? (
-                <table>
-                  <tr>
-                    <td>{item.name}</td>, <td>{item.year}</td>,{" "}
-                    <td>{item.color}</td>,<td>{item.pantone_value}</td>
-                  </tr>{" "}
-                </table>
-              ) : (
-                ""
-              )}
-
-              {/* <td>{item.name},</td>
-              <td>{item.year},</td>
-              <td>{item.color},</td>
-                <td>{item.pantone_value}</td> */}
 
               <button
                 onClick={() => {
-                  this.Count = this.Count + 1;
-                  if (this.Count == 1) {
-                    this.setState({ clicked: true });
-                  } else if (this.Count == 2) {
-                    this.setState({ clicked: false });
-                    this.Count = 0;
-                  }
+                  this.setState({ID  : item.id,Name : item.name,Year : item.year,Color : item.color,Pantone : item.pantone_value})
+                //  this.Count = this.Count + 1;
+                 this.setState({ clicked: true });
+                  // if (this.Count == 1) {
+                  //   this.setState({ clicked: true });
+                  
+                  // } else if (this.Count == 2) {
+                  //   this.setState({ clicked: false });
+                  //   this.Count = 0;
+                  // }
                 }}
               >
-                {!this.state.clicked ? "Show More" : "Show less"}
+                {/* {!this.state.clicked ? "Show More" : "Show less"} */}Show
               </button>
-            </tr>
+              </tr>
           </table>
+          </div>
         ))}
+         <div style={{"margin-left" : "200px", "margin-top" : "-170px"}}>
+          {this.state.clicked  ? (
+                <table>
+                <tr>
+                <tr><td>ID : {this.state.ID}</td></tr>
+                <tr><td>Name : {this.state.Name}</td></tr> <tr><td>Year :{this.state.Year}</td></tr>
+                    <tr><td>Color : {this.state.Color}</td></tr><tr><td> Pantone : {this.state.Pantone}</td></tr>
+                
+                    </tr>{" "}
+                    </table>) : (
+                ""
+              )}
+              </div>
+               
       </div>
     );
   }
