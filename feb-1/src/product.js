@@ -8,12 +8,7 @@ class PRODUCT extends react.Component {
       items: [],
       DataisLoaded: false,
       clicked: false,
-      Name : "",
-      Year : "",
-      Color : "",
-      Pantone : "",
-      ID : "",
-   
+      IndividualData: {},
     };
   }
 
@@ -46,65 +41,70 @@ class PRODUCT extends react.Component {
 
     return (
       <div className="App">
-    
-        <div style={{"margin-left" : "50px"}}>
-        <table>
-          <thead>Product Table</thead>
-          <th >
-            <td>Id</td>
-            {/* <td>Name</td>
+        <div style={{ "margin-left": "50px" }}>
+          <table>
+            <thead>Product Table</thead>
+            <th>
+              <td>Id</td>
+              {/* <td>Name</td>
             <td>Year</td>
             <td>Color</td>
             <td>Pantone_Value</td> */}
-          </th>
-        </table>
-
+            </th>
+          </table>
         </div>
-      
 
         {items.data.map((item) => (
-       
-              <div style={{"margin-left" : "50px"}}>
-          <table>
-            <tr >
-              <td  key={item}>
-                {item.id} 
-              </td>
+          <div style={{ "margin-left": "50px" }}>
+            <table>
+              <tr>
+                <td key={item}>{item.id}</td>
 
-              <button
-                onClick={() => {
-                  this.setState({ID  : item.id,Name : item.name,Year : item.year,Color : item.color,Pantone : item.pantone_value})
-                //  this.Count = this.Count + 1;
-                 this.setState({ clicked: true });
-                  // if (this.Count == 1) {
-                  //   this.setState({ clicked: true });
-                  
-                  // } else if (this.Count == 2) {
-                  //   this.setState({ clicked: false });
-                  //   this.Count = 0;
-                  // }
-                }}
-              >
-                {/* {!this.state.clicked ? "Show More" : "Show less"} */}Show
-              </button>
+                <button
+                  onClick={() => {
+                    this.setState({ IndividualData: item });
+                    //  this.Count = this.Count + 1;
+                    this.setState({ clicked: true });
+                    // if (this.Count == 1) {
+                    //   this.setState({ clicked: true });
+
+                    // } else if (this.Count == 2) {
+                    //   this.setState({ clicked: false });
+                    //   this.Count = 0;
+                    // }
+                  }}
+                >
+                  {/* {!this.state.clicked ? "Show More" : "Show less"} */}Show
+                </button>
               </tr>
-          </table>
+            </table>
           </div>
         ))}
-         <div style={{"margin-left" : "200px", "margin-top" : "-170px"}}>
-          {this.state.clicked  ? (
-                <table>
+        <div style={{ "margin-left": "200px", "margin-top": "-170px" }}>
+          {this.state.clicked ? (
+            <table>
+              <tr>
                 <tr>
-                <tr><td>ID : {this.state.ID}</td></tr>
-                <tr><td>Name : {this.state.Name}</td></tr> <tr><td>Year :{this.state.Year}</td></tr>
-                    <tr><td>Color : {this.state.Color}</td></tr><tr><td> Pantone : {this.state.Pantone}</td></tr>
-                
-                    </tr>{" "}
-                    </table>) : (
-                ""
-              )}
-              </div>
-               
+                  <td>ID : {this.state.IndividualData.id}</td>
+                </tr>
+                <tr>
+                  <td>Name : {this.state.IndividualData.name}</td>
+                </tr>{" "}
+                <tr>
+                  <td>Year :{this.state.IndividualData.year}</td>
+                </tr>
+                <tr>
+                  <td>Color : {this.state.IndividualData.color}</td>
+                </tr>
+                <tr>
+                  <td> Pantone : {this.state.IndividualData.pantone_value}</td>
+                </tr>
+              </tr>{" "}
+            </table>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     );
   }
