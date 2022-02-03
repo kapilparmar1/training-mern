@@ -9,11 +9,12 @@ class PRODUCT extends react.Component {
       items: [],
       DataisLoaded: false,
       clicked: false,
-      Name: "",
-      Year: "",
-      Color: "",
-      Pantone: "",
-      ID: "",
+      // Name: "",
+      // Year: "",
+      // Color: "",
+      // Pantone: "",
+      // ID: "",
+      IndividualData: {},
     };
   }
 
@@ -52,7 +53,7 @@ class PRODUCT extends react.Component {
               <thead>
                 <HEADER
                   Heading="Product-Table"
-                  title={this.state.Name}
+                  title={this.state.IndividualData.name}
                   clicked={this.state.clicked}
                 />
               </thead>
@@ -88,11 +89,7 @@ class PRODUCT extends react.Component {
                   <button
                     onClick={() => {
                       this.setState({
-                        ID: item.id,
-                        Name: item.name,
-                        Year: item.year,
-                        Color: item.color,
-                        Pantone: item.pantone_value,
+                        IndividualData: item,
                       });
                       //  this.Count = this.Count + 1;
                       this.setState({ clicked: true });
@@ -133,7 +130,7 @@ class PRODUCT extends react.Component {
                         border: "1px solid black",
                       }}
                     >
-                      ID : {this.state.ID}
+                      ID : {this.state.IndividualData.id}
                     </td>
                   </tr>
                   <tr>
@@ -142,7 +139,7 @@ class PRODUCT extends react.Component {
                         border: "1px solid black",
                       }}
                     >
-                      Name : {this.state.Name}
+                      Name : {this.state.IndividualData.name}
                     </td>
                   </tr>{" "}
                   <tr>
@@ -151,7 +148,7 @@ class PRODUCT extends react.Component {
                         border: "1px solid black",
                       }}
                     >
-                      Year :{this.state.Year}
+                      Year :{this.state.IndividualData.year}
                     </td>
                   </tr>
                   <tr>
@@ -160,7 +157,7 @@ class PRODUCT extends react.Component {
                         border: "1px solid black",
                       }}
                     >
-                      Color : {this.state.Color}
+                      Color : {this.state.IndividualData.color}
                     </td>
                   </tr>
                   <tr>
@@ -170,7 +167,7 @@ class PRODUCT extends react.Component {
                       }}
                     >
                       {" "}
-                      Pantone : {this.state.Pantone}
+                      Pantone : {this.state.IndividualData.pantone_value}
                     </td>
                   </tr>
                 </tr>{" "}

@@ -9,11 +9,7 @@ class USER extends react.Component {
       items: [],
       DataisLoaded: false,
       clicked: false,
-      Email: "",
-      FN: "",
-      LN: "",
-      Avatar: "",
-      ID: "",
+      IndividualData: {},
     };
   }
 
@@ -51,7 +47,7 @@ class USER extends react.Component {
             <thead>
               <HEADER
                 Heading="User-Table"
-                title={this.state.Email}
+                title={this.state.IndividualData.email}
                 clicked={this.state.clicked}
               />
             </thead>
@@ -88,11 +84,7 @@ class USER extends react.Component {
                   <button
                     onClick={() => {
                       this.setState({
-                        ID: item.id,
-                        Email: item.email,
-                        FN: item.first_name,
-                        LN: item.last_name,
-                        Avatar: item.avatar,
+                        IndividualData: item,
                       });
                       //  this.Count = this.Count + 1;
                       this.setState({ clicked: true });
@@ -126,7 +118,7 @@ class USER extends react.Component {
                       border: "1px solid black",
                     }}
                   >
-                    ID : {this.state.ID}
+                    ID : {this.state.IndividualData.id}
                   </td>
                 </tr>
                 <tr>
@@ -135,7 +127,7 @@ class USER extends react.Component {
                       border: "1px solid black",
                     }}
                   >
-                    Email : {this.state.Email}
+                    Email : {this.state.IndividualData.email}
                   </td>
                 </tr>{" "}
                 <tr>
@@ -144,7 +136,7 @@ class USER extends react.Component {
                       border: "1px solid black",
                     }}
                   >
-                    First_Name :{this.state.FN}
+                    First_Name :{this.state.IndividualData.first_name}
                   </td>
                 </tr>
                 <tr>
@@ -153,7 +145,7 @@ class USER extends react.Component {
                       border: "1px solid black",
                     }}
                   >
-                    Last_Name : {this.state.LN}
+                    Last_Name : {this.state.IndividualData.last_name}
                   </td>
                 </tr>
                 <tr>
@@ -165,7 +157,7 @@ class USER extends react.Component {
                     {" "}
                     Avatar :{" "}
                     <img
-                      src={this.state.Avatar}
+                      src={this.state.IndividualData.avatar}
                       alt="image"
                       width={50}
                       height={50}
