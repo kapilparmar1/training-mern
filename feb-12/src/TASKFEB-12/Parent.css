@@ -1,0 +1,12 @@
+.Main {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(228, 60, 30, 0.986),
+    rgba(255, 145, 0, 0.849),
+    rgba(228, 60, 30, 0.986)
+  );
+
+  width: 100%;
+  min-height: 100vh;
+  /* background-color: black; */
+}

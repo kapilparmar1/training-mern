@@ -1,0 +1,12 @@
+.Change {
+  color: black;
+  /* visibility: hidden; */
+}
+.Change :hover {
+  color: red;
+}
+/* .Container {
+  width: 18%;
+  min-height: 10vh;
+  background: white;
+} */
