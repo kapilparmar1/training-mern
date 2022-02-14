@@ -69,6 +69,7 @@ const Child = ({ submit }) => {
               ) : (
                 myArray.map((arrayData, index) => (
                   <div
+                    className="OK"
                     key={index}
                     style={{
                       display: "flex",
@@ -92,21 +93,23 @@ const Child = ({ submit }) => {
                           width: "97%",
                           fontSize: "18px",
                           fontWeight: "bolder",
-                          paddingLeft: "2px",
+                          paddingLeft: "4px",
                           paddingBottom: "3px",
                         }}
                         value={arrayData}
                       />
                     </div>
-                    <div className="Change">
+
+                    <div className="change">
                       <i
                         onClick={() => ONCLICK(index)}
                         style={{
                           marginTop: "10px",
-                          cursor: "pointer",
-                          marginLeft: "6px",
+                          width: "35px",
+                          height: "25px",
+                          textAlign: "center",
                         }}
-                        class="zmdi zmdi-delete zmdi-hc-lg "
+                        class="zmdi zmdi-delete zmdi-hc-lg"
                       ></i>
                     </div>
                   </div>

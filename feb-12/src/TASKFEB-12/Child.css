@@ -1,12 +1,12 @@
-.Change {
-  color: black;
-  /* visibility: hidden; */
+.change {
+  visibility: hidden;
+  width: 40px;
+  height: 37px;
+  /* display: none; */
 }
-.Change :hover {
+
+.OK:hover .change {
+  visibility: visible;
   color: red;
+  cursor: pointer;
 }
-/* .Container {
-  width: 18%;
-  min-height: 10vh;
-  background: white;
-} */
