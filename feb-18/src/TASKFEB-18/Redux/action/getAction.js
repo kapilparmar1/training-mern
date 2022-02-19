@@ -5,14 +5,9 @@ const getCall = () => {
     dispatch(apiRequest());
 
     let res = await axios.get("https://retoolapi.dev/BUCPSc/posts");
-    console.log(res);
-    try {
-      if (res) {
-        dispatch(apiSuccess(res));
-      }
-    } catch (err) {
-      dispatch(apiError(err));
-    }
+    console.log(res.data);
+
+    dispatch(apiSuccess(res.data));
   };
 };
 
@@ -22,7 +17,7 @@ const apiRequest = () => {
   };
 };
 
-export const apiSuccess = (data) => {
+const apiSuccess = (data) => {
   return {
     type: "Success",
     payload: data,

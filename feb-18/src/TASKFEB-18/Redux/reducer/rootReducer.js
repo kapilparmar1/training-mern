@@ -10,14 +10,13 @@ const ReducerForGet = (State = initialState, Action) => {
     case "Request":
       return { ...State };
 
-    case "Success ":
+    case "Success":
       return { ...State, Data: Action.payload };
 
     case "Error":
       return { ...State, Error: Action.payload };
 
     default:
-      console.log(State);
       return State;
   }
 };
