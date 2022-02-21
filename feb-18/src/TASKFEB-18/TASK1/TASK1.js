@@ -12,6 +12,7 @@ export class TASK1 extends Component {
     this.state = {
       Search: "",
       CLICKED: false,
+      modifiedList: [],
     };
   }
   componentDidMount() {
@@ -28,6 +29,17 @@ export class TASK1 extends Component {
   render() {
     const { data } = this.props;
     console.log("DATA", data);
+
+    this.CallModified = () => {
+      const modifiedList = data.filter((eachPost) => {
+        if (eachPost?.title?.includes(this.state.Search)) {
+          return eachPost;
+        }
+      });
+
+      this.setState({ modifiedList: modifiedList });
+    };
+
     return (
       <>
         <div style={{ textAlign: "center", marginTop: "10px" }}>
@@ -38,6 +50,7 @@ export class TASK1 extends Component {
               this.setState({ Search: e.target.value }, () => {
                 if (this.state.Search !== "") {
                   this.setState({ CLICKED: true });
+                  this.CallModified();
                 } else {
                   this.setState({ CLICKED: false });
                 }
@@ -45,7 +58,6 @@ export class TASK1 extends Component {
             }
           />
         </div>
-
         {!this.state.CLICKED ? (
           <div
             style={{
@@ -86,8 +98,9 @@ export class TASK1 extends Component {
                   </th>
                 </tr>
               </thead>
-              {data
-                ? data.map((data, index) => (
+              {!data
+                ? "Please Wait for Sometime..."
+                : data.map((data, index) => (
                     <tbody key={index}>
                       <tr>
                         <td style={{ border: "1px solid black" }}>{data.id}</td>
@@ -129,8 +142,7 @@ export class TASK1 extends Component {
                         </button>
                       </tr>
                     </tbody>
-                  ))
-                : "Please Wait for Sometime..."}
+                  ))}
             </table>
           </div>
         ) : (
@@ -143,42 +155,40 @@ export class TASK1 extends Component {
                   <th>Title</th>
                 </tr>
               </thead>
-              {data.map((element, index) => {
-                if (element.title === this.state.Search) {
-                  return (
-                    <tbody key={index}>
-                      <tr>
-                        <td
-                          style={{
-                            border: "1px solid black",
-                            textAlign: "center",
-                            width: "10%",
-                          }}
-                        >
-                          {element.id}
-                        </td>
-                        <td
-                          style={{
-                            border: "1px solid black",
-                            textAlign: "center",
-                            width: "10%",
-                          }}
-                        >
-                          {element.body}
-                        </td>
-                        <td
-                          style={{
-                            border: "1px solid black",
-                            textAlign: "center",
-                            width: "10%",
-                          }}
-                        >
-                          {element.title}
-                        </td>
-                      </tr>
-                    </tbody>
-                  );
-                }
+              {this.state.modifiedList.map((element, index) => {
+                return (
+                  <tbody key={index}>
+                    <tr>
+                      <td
+                        style={{
+                          border: "1px solid black",
+                          textAlign: "center",
+                          width: "10%",
+                        }}
+                      >
+                        {element.id}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid black",
+                          textAlign: "center",
+                          width: "10%",
+                        }}
+                      >
+                        {element.body}
+                      </td>
+                      <td
+                        style={{
+                          border: "1px solid black",
+                          textAlign: "center",
+                          width: "10%",
+                        }}
+                      >
+                        {element.title}
+                      </td>
+                    </tr>
+                  </tbody>
+                );
               })}
             </table>
           </div>
