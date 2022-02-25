@@ -16,21 +16,9 @@ const rootReducer1 = (State = initialState, Action) => {
 const rootReducer2 = (State = [], Action) => {
   switch (Action.type) {
     case "Mod":
-      let Index = State.findIndex((Index) => Index.id === Action.payload.id);
+      console.log("ACtion : ", Action);
 
-      if (Index !== -1) {
-        let arr = State;
-        console.log("Arr count before : ", arr[Index].count);
-        arr.splice(Action.payload.id, 1, {
-          id: Action.payload.id,
-          Grocery: Action.payload.Grocery,
-          count: arr[Index].count + 1,
-        });
-        State = arr;
-        return [...State];
-      } else {
-        return [...State, Action.payload];
-      }
+      return Action.payload;
 
     default:
       return State;

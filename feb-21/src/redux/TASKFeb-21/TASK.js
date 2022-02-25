@@ -9,7 +9,7 @@ export class TASK extends Component {
     super(props);
     this.state = {
       clickedArray: [],
-      ONCLICK: "",
+      ONCLICK: false,
     };
   }
   componentDidMount() {
@@ -97,11 +97,34 @@ export class TASK extends Component {
                         i.Grocery.includes(data.Grocery)
                       );
                       if (CHECK) {
-                        this.props.sendModifiedList({
-                          id: data.id,
-                          Grocery: data.Grocery,
-                          count: 1,
-                        });
+                        let Index = this.state.clickedArray.findIndex(
+                          (Index) => Index.id === data.id
+                        );
+                        let count = this.state.clickedArray[Index].count;
+                        console.log("cout is :", count);
+                        if (!this.state.ONCLICK) {
+                          let newArray = this.state.clickedArray;
+                          newArray.splice(Index, 1, {
+                            id: data.id,
+                            Grocery: data.Grocery,
+                            count: count + 1,
+                          });
+
+                          console.log("After change is : ", newArray);
+
+                          this.setState(
+                            {
+                              clickedArray: newArray,
+                            },
+
+                            () => {
+                              this.props.sendModifiedList(
+                                this.state.clickedArray
+                              );
+                              console.log("List : ", this.state.clickedArray);
+                            }
+                          );
+                        }
                       } else {
                         this.setState(
                           {
@@ -110,7 +133,7 @@ export class TASK extends Component {
                               {
                                 id: data.id,
                                 Grocery: data.Grocery,
-                                isSelected: false,
+                                count: 1,
                               },
                             ],
                           },
@@ -134,15 +157,21 @@ export class TASK extends Component {
           </div>
           <div style={{ marginLeft: "450px" }}>
             <h2>BASKET</h2>
-            {this.props.ArrayData.map((data, index) => (
+            {this.state.clickedArray.map((data, index) => (
               <div
                 onClick={(event) => {
                   if (event.target.style.textDecoration === "none") {
                     event.target.style.textDecoration = "line-through";
                     event.target.style.textDecorationColor = "black";
                     event.target.style.textDecorationThickness = "22%";
+                    this.setState({
+                      ONCLICK: true,
+                    });
                   } else {
                     event.target.style.textDecoration = "none";
+                    this.setState({
+                      ONCLICK: false,
+                    });
                   }
                 }}
                 key={index}
