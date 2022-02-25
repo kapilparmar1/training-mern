@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { sendList, sendModifiedList } from "../action/action";
 import groceryList from "../Grocery";
+import "./TASk.css";
 
 export class TASK extends Component {
   constructor(props) {
     super(props);
     this.state = {
       clickedArray: [],
+      ONSTRIKE: [],
       ONCLICK: false,
     };
   }
@@ -85,7 +87,7 @@ export class TASK extends Component {
                     style={{
                       height: "40px",
                       color: "white",
-                      width: "400px",
+                      width: "380px",
                       textAlign: "center",
                       borderRadius: "5px",
                       boxShadow: "2px 2px 5px rgba(70,57,57)",
@@ -102,7 +104,11 @@ export class TASK extends Component {
                         );
                         let count = this.state.clickedArray[Index].count;
                         console.log("cout is :", count);
-                        if (!this.state.ONCLICK) {
+                        if (
+                          !this.state.ONSTRIKE.some((i) =>
+                            i.includes(data.Grocery)
+                          )
+                        ) {
                           let newArray = this.state.clickedArray;
                           newArray.splice(Index, 1, {
                             id: data.id,
@@ -155,7 +161,7 @@ export class TASK extends Component {
                 ))
               : ""}
           </div>
-          <div style={{ marginLeft: "450px" }}>
+          <div className="Parent" style={{ marginLeft: "450px" }}>
             <h2>BASKET</h2>
             {this.state.clickedArray.map((data, index) => (
               <div
@@ -164,14 +170,25 @@ export class TASK extends Component {
                     event.target.style.textDecoration = "line-through";
                     event.target.style.textDecorationColor = "black";
                     event.target.style.textDecorationThickness = "22%";
-                    this.setState({
-                      ONCLICK: true,
-                    });
+                    this.setState(
+                      {
+                        ONSTRIKE: [...this.state.ONSTRIKE, data.Grocery],
+                      },
+                      () => console.log("ONSSTIE : ", this.state.ONSTRIKE)
+                    );
                   } else {
                     event.target.style.textDecoration = "none";
-                    this.setState({
-                      ONCLICK: false,
-                    });
+                    let array = this.state.ONSTRIKE;
+                    let Index = this.state.ONSTRIKE.findIndex(
+                      (Index) => Index === data.Grocery
+                    );
+                    array.splice(Index, 1);
+                    this.setState(
+                      {
+                        ONSTRIKE: array,
+                      },
+                      () => console.log("ONSSTIE : ", this.state.ONSTRIKE)
+                    );
                   }
                 }}
                 key={index}
@@ -188,14 +205,15 @@ export class TASK extends Component {
                   textDecoration: "none",
                 }}
               >
-                {" "}
-                <i
-                  class="zmdi zmdi-minus-square zmdi-hc-lg"
-                  style={{
-                    marginTop: "13.5px",
-                    marginLeft: "15px",
-                  }}
-                ></i>
+                <div className="Child">
+                  <i
+                    class="zmdi zmdi-minus-square zmdi-hc-lg "
+                    style={{
+                      marginTop: "13.5px",
+                      marginLeft: "15px",
+                    }}
+                  ></i>
+                </div>
                 <h3
                   style={{
                     marginTop: "8px",

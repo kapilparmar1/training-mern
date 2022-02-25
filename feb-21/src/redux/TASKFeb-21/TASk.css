@@ -1,1 +1,9 @@
+.Child {
+  visibility: hidden;
+}
 
+.Parent :hover .Child {
+  color: red;
+
+  visibility: visible;
+}
