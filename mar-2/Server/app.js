@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const url = require("url");
+// const url = require("url");
 
 const port = 8000;
 const author = [
@@ -58,14 +58,14 @@ app.get("/user/:id", (req, res) => {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   switch (req.params.id) {
-    case ":1":
+    case "1":
       res.send(users[0]);
 
       break;
-    case ":2":
+    case "2":
       res.send(users[1]);
       break;
-    case ":3":
+    case "3":
       res.send(users[2]);
       break;
     default:

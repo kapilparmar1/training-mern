@@ -29,7 +29,7 @@ const AuthorAction = (data) => {
 
 export const Action3 = (id) => {
   return async (dispatch) => {
-    let res = await axios.get(`http://localhost:8000/user/:${id}`);
+    let res = await axios.get(`http://localhost:8000/user/${id}`);
     dispatch(UserAction(res.data));
   };
 };
