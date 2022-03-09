@@ -26,9 +26,20 @@ app.post("/", (req, res, next) => {
   }
 });
 
-app.get("*", (req, res) => {
-  res.send("Error 404");
-});
+app
+  .route("*")
+  .get((req, res) => {
+    res.send("Error 404");
+  })
+  .put((req, res) => {
+    res.send("Error 404");
+  })
+  .delete((req, res) => {
+    res.send("Error 404");
+  })
+  .patch((req, res) => {
+    res.send("Error 404");
+  });
 
 app.listen(port, () => {
   console.log("Server is running on  : ", port);
