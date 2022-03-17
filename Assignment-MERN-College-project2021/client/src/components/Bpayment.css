@@ -1,0 +1,34 @@
+.inputs{
+
+    padding-left: 150px;
+}.arrow1
+{
+    height: 60px;
+    width: 60px;
+    background: rgb(4, 48, 4);
+    
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    color: black;
+    border : 5px solid black;
+margin-top: 5px;
+margin-left: 20px;
+}
+.arrow2
+{
+    height: 60px;
+    width: 60px;
+    background: rgb(4, 48, 4);
+    
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    color: black;
+    border : 5px solid black;
+margin-top: -50px;
+margin-left: 90%;
+}
+.note{
+    margin-top: 50px;
+}
