@@ -1,0 +1,57 @@
+.main1 {
+    min-height: 80vh;
+    width: 60%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.938) , rgba(85, 72, 72, 0.664) , rgba(0, 0, 0, 0.938));
+    /*background-position: center;*/
+    /*  background-size: cover;*/
+    position: relative;
+    padding-bottom: 3rem;
+    margin-left: 20%;
+    margin-right: 20%;
+    
+}
+.form-box123 {
+    width: 280px;
+    height: 350px; 
+    position: relative;
+    vertical-align: middle;
+    margin: 0 auto; 
+   /* background-image: linear-gradient(to bottom right , rgba(255, 255, 255, 0.849),rgb(0, 128, 100)); */
+   background: rgba(255, 255, 255, 0.747);
+   border-radius: 5%;
+    padding: 10px;
+    overflow: hidden;
+}
+.form-box123 >h2{
+
+    margin-left: 50px;
+    font-weight: bold;
+    
+}
+.PAYY{
+    margin: 30px 20px;
+   
+
+}
+.a123{
+margin-top: 20px;
+border: none;
+padding: 2px 16px 2px 16px;
+border-radius: 3px;
+}
+.a1234{
+    margin-top: 20px;
+    border: none;
+    padding: 2px 16px 2px 16px;
+    border-radius: 3px;
+    width: 95%;
+    }
+.pay1{
+
+    margin-left: 85px;
+    border: none;
+    padding: 2px 16px 5px 16px;
+    border-radius: 5px;
+    background: #3e60c1 ;
+    color: white;
+}
